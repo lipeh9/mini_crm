@@ -85,9 +85,9 @@ python -m venv venv
 source venv/bin/activate     # Linux/macOS
 venv\Scripts\activate        # Windows
 
-### 3. Instale as dependências
+### 3. Crie os requirements.txt
 
-pip install -r requirements.txt
+pip freeze > requirements.txt
 
 ### 4. Execute a aplicação
 
