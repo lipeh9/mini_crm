@@ -115,7 +115,3 @@ pip freeze > requirements.txt
 📄 Licença
 
 MIT License.
-
----
-
-Se quiser, posso gerar esse `README.md` em um arquivo pronto para você fazer o commit ou incluir prints da interface. Deseja que eu gere isso em arquivo `.md` agora?
