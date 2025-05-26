@@ -109,7 +109,15 @@ python -m pip install flask
 python -c "import flask; print(flask.__version__)"
 (Deve mostrar a versão instalada, ex: 2.3.2)
 
-### 5. Execute a aplicação
+### 5. Instale o pacote (escolha uma opção):
+
+Versão padrão (pode exigir dependências do sistema):
+pip install psycopg2
+
+Versão binária (pré-compilada, mais fácil para Windows):
+pip install psycopg2-binary
+
+### 6. Execute a aplicação
 
 python mini_crm/app.py
 
