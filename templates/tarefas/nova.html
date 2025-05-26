@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block conteudo %}
+<h2>Nova Tarefa</h2>
+<form method="POST">
+    <label for="titulo">Título:</label><br>
+    <input type="text" name="titulo" required><br><br>
+
+    <label for="descricao">Descrição:</label><br>
+    <textarea name="descricao" required></textarea><br><br>
+
+    <label for="data_agendada">Data Agendada:</label><br>
+    <input type="date" name="data_agendada" required><br><br>
+
+    <input type="submit" value="Salvar">
+</form>
+<br>
+<a href="{{ url_for('listar_tarefas', id_cliente=id_cliente) }}">Voltar</a>
+{% endblock %}

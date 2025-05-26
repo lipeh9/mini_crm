@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block conteudo %}
+<h2>Novo Contato para {{ cliente_nome }}</h2>
+
+<form method="POST">
+    <label>Tipo de Contato:</label><br>
+    <input type="text" name="tipo" required><br><br>
+
+    <label>Descrição:</label><br>
+    <textarea name="descricao" required></textarea><br><br>
+
+    <label>Data do Contato:</label><br>
+    <input type="date" name="data_contato" required><br><br>
+
+    <button type="submit">Salvar Contato</button>
+</form>
+
+<a href="{{ url_for('listar_clientes') }}">Voltar</a>
+{% endblock %}

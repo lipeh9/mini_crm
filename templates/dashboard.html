@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block title %}Dashboard - Mini CRM{% endblock %}
+
+{% block content %}
+<h2>Dashboard</h2>
+<div class="row g-4 mt-3">
+
+  <div class="col-md-4">
+    <div class="card text-bg-primary">
+      <div class="card-body">
+        <h5 class="card-title">Total de Clientes</h5>
+        <p class="card-text fs-2">{{ total_clientes }}</p>
+        <i class="bi bi-people-fill fs-1"></i>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-4">
+    <div class="card text-bg-success">
+      <div class="card-body">
+        <h5 class="card-title">Tarefas Pendentes</h5>
+        <p class="card-text fs-2">{{ tarefas_pendentes }}</p>
+        <i class="bi bi-check-square fs-1"></i>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-4">
+    <div class="card text-bg-warning">
+      <div class="card-body">
+        <h5 class="card-title">Clientes Ativos</h5>
+        <p class="card-text fs-2">{{ clientes_ativos }}</p>
+        <i class="bi bi-person-check-fill fs-1"></i>
+      </div>
+    </div>
+  </div>
+
+</div>
+{% endblock %}

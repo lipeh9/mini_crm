@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Editar Contato</title>
+    <!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Sistema de Gestão de Clientes - Mini CRM</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>Mini-CRM - Sistema de Gestão de Clientes</h1>
+
+    <ul>
+        <li><a href="/clientes">Gerenciar Clientes</a></li>
+        <li><a href="/tarefas">Gerenciar Tarefas</a></li>
+    </ul>
+</body>
+</html>
+
+</head>
+<body>
+    <h1>Editar Contato</h1>
+    <form method="post">
+        <label>Tipo:</label><br>
+        <input type="text" name="tipo" value="{{ contato['tipo'] }}"><br><br>
+
+        <label>Descrição:</label><br>
+        <input type="text" name="descricao" value="{{ contato['descricao'] }}"><br><br>
+
+        <button type="submit">Salvar</button>
+    </form>
+    <br>
+    <a href="/clientes/{{ contato['id_cliente'] }}/contatos">Voltar</a>
+</body>
+</html>

@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+
+{% block title %}Cadastrar Cliente{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2>Cadastrar Novo Cliente</h2>
+    <form method="POST">
+        <div class="mb-3">
+            <label for="nome" class="form-label">Nome</label>
+            <input type="text" class="form-control" id="nome" name="nome" required>
+        </div>
+        <div class="mb-3">
+            <label for="email" class="form-label">E-mail</label>
+            <input type="email" class="form-control" id="email" name="email" required>
+        </div>
+        <div class="mb-3">
+            <label for="telefone" class="form-label">Telefone</label>
+            <input type="tel" class="form-control" id="telefone" name="telefone" pattern="[0-9]{10,11}">
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">O cliente possui empresa?</label><br>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="possui_empresa" id="empresa_sim" value="sim" onclick="toggleEmpresa(true)">
+                <label class="form-check-label" for="empresa_sim">Sim</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="possui_empresa" id="empresa_nao" value="nao" onclick="toggleEmpresa(false)" checked>
+                <label class="form-check-label" for="empresa_nao">Não</label>
+            </div>
+        </div>
+
+        <div class="mb-3" id="campo_empresa" style="display: none;">
+            <label for="empresa" class="form-label">Nome da empresa</label>
+            <input type="text" class="form-control" id="empresa" name="empresa">
+        </div>
+
+        <button type="submit" class="btn btn-primary">Salvar</button>
+        <a href="{{ url_for('listar_clientes') }}" class="btn btn-secondary">Cancelar</a>
+    </form>
+</div>
+
+<script>
+    function toggleEmpresa(mostrar) {
+        const campo = document.getElementById('campo_empresa');
+        const input = document.getElementById('empresa');
+        if (mostrar) {
+            campo.style.display = 'block';
+        } else {
+            campo.style.display = 'none';
+            input.value = '';
+        }
+    }
+</script>
+{% endblock %}

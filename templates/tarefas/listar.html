@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+
+{% block conteudo %}
+<h2>Tarefas de {{ cliente_nome }}</h2>
+
+<!-- Botão de nova tarefa -->
+<p>
+    <a href="{{ url_for('nova_tarefa', id_cliente=id_cliente) }}">+ Nova Tarefa</a>
+</p>
+
+<!-- Se houver tarefas -->
+{% if tarefas %}
+<table border="1" cellpadding="5" cellspacing="0">
+    <tr>
+        <th>Título</th>
+        <th>Descrição</th>
+        <th>Data</th>
+        <th>Status</th>
+        <th>Ações</th>
+    </tr>
+
+    {% for tarefa in tarefas %}
+    <tr>
+        <td>{{ tarefa[1] }}</td> <!-- título -->
+        <td>{{ tarefa[2] }}</td> <!-- descrição -->
+        <td>{{ tarefa[3] }}</td> <!-- data_agendada -->
+        <td>
+            {% if tarefa[4] %}
+                ✅ Concluída
+            {% else %}
+                ⏳ Pendente
+            {% endif %}
+        </td>
+        <td>
+            {% if not tarefa[4] %}
+                <a href="{{ url_for('concluir_tarefa', id_cliente=id_cliente, id_agendamento=tarefa[0]) }}">Concluir</a> |
+            {% else %}
+                ✔ Concluída |
+            {% endif %}
+
+            <a href="{{ url_for('editar_tarefa', id_cliente=id_cliente, id_agendamento=tarefa[0]) }}">Editar</a> |
+            <a href="{{ url_for('excluir_tarefa', id_cliente=id_cliente, id_agendamento=tarefa[0]) }}" onclick="return confirm('Tem certeza que deseja excluir esta tarefa?')">Excluir</a>
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+
+{% else %}
+<p>Nenhuma tarefa cadastrada.</p>
+{% endif %}
+
+<!-- Link de volta -->
+<p>
+    <a href="{{ url_for('listar_clientes') }}">← Voltar para Clientes</a>
+</p>
+{% endblock %}

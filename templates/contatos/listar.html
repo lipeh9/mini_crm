@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block conteudo %}
+<h2>Contatos de {{ cliente_nome }}</h2>
+
+<a href="{{ url_for('novo_contato', id_cliente=id_cliente) }}">+ Novo Contato</a>
+<br><br>
+
+{% if contatos %}
+<table border="1" cellpadding="5">
+    <tr>
+        <th>Tipo</th>
+        <th>Descrição</th>
+        <th>Data do Contato</th>
+        <th>Ações</th>  <!-- Nova coluna para os botões -->
+    </tr>
+    {% for contato in contatos %}
+    <tr>
+        <td>{{ contato[1] }}</td>
+        <td>{{ contato[2] }}</td>
+        <td>{{ contato[3] }}</td>
+        <td>
+            <!-- Botão de Editar -->
+            <a href="{{ url_for('editar_contato', id_contato=contato[0]) }}">Editar</a>
+
+            <!-- Botão de Excluir (com confirmação e CSRF) -->
+            <form action="{{ url_for('excluir_contato', id_contato=contato[0]) }}" method="post" style="display:inline;">
+                <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                <button type="submit" onclick="return confirm('Tem certeza que deseja excluir este contato?')">Excluir</button>
+            </form>
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+{% else %}
+<p>Nenhum contato cadastrado.</p>
+{% endif %}
+
+<br>
+<a href="{{ url_for('listar_clientes') }}">Voltar para Clientes</a>
+{% endblock %}
