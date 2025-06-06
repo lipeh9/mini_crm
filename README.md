@@ -39,7 +39,7 @@ Mini-CRM é um sistema simples de gerenciamento de clientes, tarefas e contatos,
 ---
 
 ## 📁 Estrutura de Pastas
-
+```
 mini_crm/
 ├── instance/
 │ └── database.db # Banco de dados SQLite
@@ -68,7 +68,7 @@ mini_crm/
 ├── forms.py # Formulários com WTForms
 ├── requirements.txt
 └── README.md
-
+```
 ---
 
 ## ▶️ Como Executar o Projeto
